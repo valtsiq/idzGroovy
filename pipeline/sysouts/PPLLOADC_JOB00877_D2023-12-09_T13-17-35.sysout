@@ -1,0 +1,83 @@
+
+***JESMSGLG:JES2:*****************************************************************************
+
+1                       J E S 2  J O B  L O G  --  S Y S T E M  S 0 W 1  --  N O D E  S 0 W 1            
+0 
+ 10.17.50 JOB00877 ---- SATURDAY,  09 DEC 2023 ----
+ 10.17.50 JOB00877  IRR010I  USERID IBMUSER  IS ASSIGNED TO THIS JOB.
+ 10.17.50 JOB00877  ICH70001I IBMUSER  LAST ACCESS AT 17:42:35 ON TUESDAY, NOVEMBER 21, 2023
+ 10.17.50 JOB00877  $HASP373 PPLLOADC STARTED - INIT 1    - CLASS A        - SYS S0W1
+ 10.17.50 JOB00877  IEF403I PPLLOADC - STARTED - TIME=10.17.50
+ 10.17.51 JOB00877  -                                      -----TIMINGS (MINS.)------                          -----PAGING COUNTS----
+ 10.17.51 JOB00877  -STEPNAME PROCSTEP    RC   EXCP   CONN       TCB       SRB  CLOCK          SERV  WORKLOAD  PAGE  SWAP   VIO SWAPS
+ 10.17.51 JOB00877  -ST1                  00    163      0       .00       .00     .0            15  BATCH        0     0     0     0
+ 10.17.51 JOB00877  IEF404I PPLLOADC - ENDED - TIME=10.17.51
+ 10.17.51 JOB00877  -PPLLOADC ENDED.  NAME-IBMUSER              TOTAL TCB CPU TIME=      .00 TOTAL ELAPSED TIME=    .0
+ 10.17.51 JOB00877  $HASP395 PPLLOADC ENDED - RC=0000
+0------ JES2 JOB STATISTICS ------
+-  09 DEC 2023 JOB EXECUTION DATE
+-           12 CARDS READ
+-           75 SYSOUT PRINT RECORDS
+-            0 SYSOUT PUNCH RECORDS
+-            8 SYSOUT SPOOL KBYTES
+-         0.01 MINUTES EXECUTION TIME
+
+***JESJCL:JES2:*****************************************************************************
+
+        1 //PPLLOADC  JOB (PIPELINE),IBMUSER,CLASS=A,MSGCLASS=H                   JOB00877
+          //* -------------------------------------------------                           
+        2 //ST1       EXEC PGM=IEBCOPY                                                    
+        3 //SYSPRINT  DD SYSOUT=*                                                         
+        4 //SYSUT3    DD UNIT=SYSDA,SPACE=(3120,(20,10))                                  
+        5 //SYSUT4    DD UNIT=SYSDA,SPACE=(3120,(20,10))                                  
+        6 //INDD      DD DISP=SHR,DSN=VALTER.BUILDER.CEP.LOAD                             
+        7 //OUTDD     DD DISP=SHR,DSN=VALTER.BUILDER.NEW.LOAD                             
+        8 //SYSIN     DD *                                                                
+
+***JESYSMSG:JES2:*****************************************************************************
+
+ ICH70001I IBMUSER  LAST ACCESS AT 17:42:35 ON TUESDAY, NOVEMBER 21, 2023
+ IEFA111I PPLLOADC IS USING THE FOLLOWING JOB RELATED SETTINGS:
+          SWA=ABOVE,TIOT SIZE=32K,DSENQSHR=DISALLOW,GDGBIAS=JOB
+ IEF236I ALLOC. FOR PPLLOADC ST1
+ IEF237I JES2 ALLOCATED TO SYSPRINT
+ IGD101I SMS ALLOCATED TO DDNAME (SYSUT3  )
+         DSN (SYS23343.T101750.RA000.PPLLOADC.R0101902    )
+         STORCLAS (SCBASE) MGMTCLAS (        ) DATACLAS (        )
+         VOL SER NOS= VIO                                                                   
+ IGD101I SMS ALLOCATED TO DDNAME (SYSUT4  )
+         DSN (SYS23343.T101750.RA000.PPLLOADC.R0101903    )
+         STORCLAS (SCBASE) MGMTCLAS (        ) DATACLAS (        )
+         VOL SER NOS= VIO                                                                   
+ IGD103I SMS ALLOCATED TO DDNAME INDD
+ IGD103I SMS ALLOCATED TO DDNAME OUTDD
+ IEF237I JES2 ALLOCATED TO SYSIN
+ IEF142I PPLLOADC ST1 - STEP WAS EXECUTED - COND CODE 0000
+ IEF285I   IBMUSER.PPLLOADC.JOB00877.D0000102.?         SYSOUT        
+ IGD105I SYS23343.T101750.RA000.PPLLOADC.R0101902     DELETED,   DDNAME=SYSUT3  
+ IGD105I SYS23343.T101750.RA000.PPLLOADC.R0101903     DELETED,   DDNAME=SYSUT4  
+ IGD104I VALTER.BUILDER.CEP.LOAD                      RETAINED,  DDNAME=INDD    
+ IGD104I VALTER.BUILDER.NEW.LOAD                      RETAINED,  DDNAME=OUTDD   
+ IEF285I   IBMUSER.PPLLOADC.JOB00877.D0000101.?         SYSIN         
+ IEF373I STEP/ST1     /START 2023343.1017
+ IEF032I STEP/ST1     /STOP  2023343.1017 
+         CPU:     0 HR  00 MIN  00.20 SEC    SRB:     0 HR  00 MIN  00.02 SEC    
+         VIRT:  1024K  SYS:   272K  EXT:       32K  SYS:    11776K
+         ATB- REAL:                   232K  SLOTS:                     0K
+              VIRT- ALLOC:      13M SHRD:       0M
+ IEF375I  JOB/PPLLOADC/START 2023343.1017
+ IEF033I  JOB/PPLLOADC/STOP  2023343.1017 
+         CPU:     0 HR  00 MIN  00.20 SEC    SRB:     0 HR  00 MIN  00.02 SEC    
+
+***SYSPRINT:ST1:*****************************************************************************
+
+1                                         IEBCOPY MESSAGES AND CONTROL STATEMENTS                              PAGE     1
+-IEB1135I IEBCOPY  FMID HDZ2250  SERVICE LEVEL UJ05520  DATED 20210505 DFSMS 02.05.00 z/OS    02.05.00 HBB77D0  CPU 1090 
+ IEB1035I PPLLOADC  ST1      10:17:50 SAT 09 DEC 2023 PARM=''                                                            
+-  COPY INDD=INDD,OUTDD=OUTDD                                                                                            
+   SELECT MEMBER=((CEPCICS3,,R))                                                                                         
+0IEB1013I COPYING FROM PDSE  INDD=INDD     VOL=USR001 DSN=VALTER.BUILDER.CEP.LOAD                                        
+ IEB1014I           TO PDSE OUTDD=OUTDD    VOL=USR001 DSN=VALTER.BUILDER.NEW.LOAD                                        
+ IGW01552I MEMBER CEPCICS3 HAS BEEN COPIED   AND REPLACED                                                                
+ IGW01550I 1 OF 1 SPECIFIED  MEMBERS WERE COPIED                                                                         
+ IEB147I END OF JOB - 0 WAS HIGHEST SEVERITY CODE                                                                        
