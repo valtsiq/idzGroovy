@@ -1,0 +1,20 @@
+--------------------------------------------------------------------------------------------------------------------------
+** CopyPdseMemberText
+** Copy Cobol Source Code Member from a PDSE to Other PDSE
+** - It may be used for all PDSE text members
+$DBB_HOME/bin/groovyz -DBB_DAEMON_HOST 127.0.0.1 -DBB_DAEMON_PORT 8080 /var/devops/sourceScripts/CopyPdseMemberText.groovy CEPCICS2 VALTER.BUILDER.CEP.COBOL VALTER.BUILDER.NEW.COBOL
+---------------------------------------------------------------------------------------------------------------------------
+** CopyPdseMemberBin
+** Copy Cobol Executable code member from a PDSE to Other PDSE
+** - It may be used for all PDSE Executable code members
+$DBB_HOME/bin/groovyz -DBB_DAEMON_HOST 127.0.0.1 -DBB_DAEMON_PORT 8080 /var/devops/sourceScripts/CopyPdseMemberBin.groovy CEPBLOAD VALTER.BUILDER.CEP.LOAD VALTER.BUILDER.NEW.LOAD
+---------------------------------------------------------------------------------------------------------------------------
+** CopyFileTestToPdse
+** Copy text files from USS file systems to PDSE datasets
+** - It may be used for all text files with record length compatible with target dataset
+$DBB_HOME/bin/groovyz -DBB_DAEMON_HOST 127.0.0.1 -DBB_DAEMON_PORT 8080 /var/devops/sourceScripts/CopyFileTextToPdse.groovy CEPBLOAD.cbl /u/valter/dbbSandbox/Cep/CobolBatch CEPBLOAD VALTER.BUILDER.NEW.COBOL
+---------------------------------------------------------------------------------------------------------------------------
+** pplCopyLoad
+** Copy loadmudele from PDSE to PDSE datasets
+** - It may be used for all loadmodules that need to be copied from a PDSE to other
+$DBB_HOME/bin/groovyz -DBB_DAEMON_HOST 127.0.0.1 -DBB_DAEMON_PORT 8080 /var/devops/sourceScripts/pplCopyLoad.groovy CEPCICS1 VALTER.BUILDER.CEP.LOAD VALTER.BUILDER.NEW.LOAD
